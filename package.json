@@ -1,0 +1,14 @@
+{
+  "name": "payments",
+  "version": "1.0.0",
+  "description": "a simple application to handle payments through paypal and braintree",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mahmoud Elzoka",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
