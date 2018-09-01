@@ -11,5 +11,5 @@ module.exports = {
         publicKey: process.env.BRAINTREE_PUBLIC_KEY,
         privateKey: process.env.BRAINTREE_PRIVATE_KEY
     },
-    mongoURI: process.env.mongoURI
+    mongoURI: process.env.MONGODB_URI
 }
