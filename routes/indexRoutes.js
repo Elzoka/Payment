@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const path = require('path');
 
-const {URL} = require('../config')
 const {validatePayment, paymentMethod} = require('../lib/helpers/payment');
 const {isValidCreditNumber, getCardType} = require('../lib/helpers/validateData');
 

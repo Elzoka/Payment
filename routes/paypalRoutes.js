@@ -3,7 +3,7 @@ const url = require('url');
 require('../lib/gateways/paypal');
 
 const {createPayment, executePayment} = require('../lib/helpers/paypal');
-const Order = require('../models/Order');
+const Order = require('../db/models/Order');
 
 router.post('/payment',(req, res) => {
     // paypal

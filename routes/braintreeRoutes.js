@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {makeTransaction} = require('../lib/helpers/braintree');
-const Order = require('../models/Order');
+const Order = require('../db/models/Order');
 
 
 router.post('/checkout',(req, res) => {
@@ -12,7 +12,7 @@ router.post('/checkout',(req, res) => {
             makeTransaction(order)
                 .then(result => {
                     Order
-                        .findByIdAndUpdate(order._id, {
+                        .findOneAndUpdate({_id: order._id}, {
                             success: result.success,
                             response: result
                         }, {new: true})
@@ -29,7 +29,7 @@ router.post('/checkout',(req, res) => {
                 });
                     
         })
-        .catch(e => res.status(400).send());
+        .catch(e => res.status(400).send({}));
     
 });
 

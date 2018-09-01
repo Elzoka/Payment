@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
-const {getCardType, isValidCreditNumber, isValidCurrency, isValidCVV, isValidExpirationDate} = require('../lib/helpers/validateData');
+const {getCardType, isValidCreditNumber, isValidCurrency, isValidCVV, isValidExpirationDate} = require('../../lib/helpers/validateData');
 
 const OrderSchema = new Schema({
     cardType: {
@@ -63,10 +63,11 @@ const OrderSchema = new Schema({
 // });
 
 OrderSchema.statics.createOrder = function(data){
-    const {name, fullName, number, cvv, expirationDate, currency, amount, id, token} = data;
+    const {name, fullName, number, cvv, expirationDate, currency, amount, id, token, _id} = data;
     const Order = this;
         // create Order object, validate it and save it database then make order
     return Order.create({
+        _id: _id || mongoose.Types.ObjectId(),
         cardType: getCardType(number),
         orderId: id,
         number,
