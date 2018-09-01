@@ -1,5 +1,5 @@
 .container {
-    margin-top: 30px;
+    margin-top: 7.5%;
 }
 
 .btn.btn-lg {
@@ -8,4 +8,25 @@
 
 .invalid-feedback{
     display: inline;
+}
+form {
+    padding: 15px;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+}
+.main h1 {
+    font-size: 50px;
+}
+#donate {
+    font-size: 100px;
+}
+#necessities{
+    font-size: 60px;
+}
+
+#close:hover{
+    cursor: pointer;
 }

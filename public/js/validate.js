@@ -49,6 +49,29 @@ const validateHelper = (function (){
         }
 
     }
+    function isValidMonth(month) {
+        return (month >= 1 && month <= 12);
+    };
+      
+    
+    function isValidExpirationDate(date) {
+        let [month, year] = date.split('/');
+        var today = new Date();
+        var currentMonth = (today.getMonth() + 1);
+        var currentYear = "" + today.getFullYear();
+    
+        if (("" + year).length == 2) {
+            year = currentYear.substring(0, 2) + "" + year;
+        }
+    
+        currentMonth = parseInt(currentMonth);
+        currentYear = parseInt(currentYear);
+        month = parseInt(month);
+        year = parseInt(year);
+    
+        return isValidMonth(month)
+            && ((year > currentYear) || (year == currentYear && month >= currentMonth));
+    };
 
     function validateExpirationDate(){
         $('.date-error').remove();
@@ -58,21 +81,17 @@ const validateHelper = (function (){
             return expirationDate.after(`<div class="invalid-feedback date-error">You must provide a date</div>`);
         }
 
-        const expiryDate = expirationDate.val().split('/');
-        const month = expiryDate[0];
-        const year = expiryDate[1];
-
-        if(isNaN(month) || isNaN(year) || month <= 0 || month > 12 || month.length < 2 ||year < new Date().getFullYear().toString().split(2) || month.length < 2){
+        if(!isValidExpirationDate(expirationDate.val())){
             return expirationDate.after(`<div class="invalid-feedback date-error">You must provide a valid date</div>`);
         }
 
     }
 
-    function validateCCV(){
-        $('.ccv-error').remove();
-        const ccv = $('#ccv');
-        if(!ccv.val()){
-            return ccv.after(`<div class="invalid-feedback ccv-error">You must provide a value</div>`);
+    function validateCVV(){
+        $('.cvv-error').remove();
+        const cvv = $('#cvv');
+        if(!cvv.val()){
+            return cvv.after(`<div class="invalid-feedback cvv-error">You must provide a value</div>`);
         }
     }
 
@@ -83,7 +102,6 @@ const validateHelper = (function (){
                 errors.push(key);
             }
         }
-
         return !errors.length;
     }
 
@@ -94,7 +112,7 @@ const validateHelper = (function (){
         validateCardName();
         validateCardNumber();
         validateExpirationDate();
-        validateCCV();
+        validateCVV();
     };
 
     return {
@@ -104,7 +122,7 @@ const validateHelper = (function (){
         validateCardName,
         validateCardNumber,
         validateExpirationDate,
-        validateCCV,
+        validateCVV,
         validateForm,
         isValidData
     }

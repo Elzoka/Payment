@@ -4,11 +4,14 @@
   "description": "a simple application to handle payments through paypal and braintree",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "SET \"NODE_ENV=development\" && nodemon"
   },
   "author": "Mahmoud Elzoka",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "braintree": "^2.12.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.12",
+    "paypal-rest-sdk": "^1.8.1"
   }
 }
